@@ -28,19 +28,126 @@ However, the remaining flip-flops should be made ready to toggle only when all l
 
 **Procedure**
 
-/* write all the steps invloved */
+
+**UP COUNTER**
+
+1. Open Quartus Prime and create a new project for the 4-bit synchronous up counter.
+2. Write the Verilog HDL code using four JK flip-flops with a common clock input.
+3. Connect J and K of the LSB flip-flop to logic 1 so it toggles on every clock pulse.
+4. Configure the remaining flip-flops so they toggle only when all lower-order Q outputs are high.
+5. Compile the design and check for errors.
+6. Simulate the circuit and observe the count sequence using the timing diagram.
+7. Verify the output values with the truth table to confirm correct up-counting operation.
+
+
+**DOWN COUNTER**
+
+1. Open Quartus Prime and create a new new project for the down counter.
+2. Create a Verilog HDL file and define the module with clock and reset inputs and a multi-bit output.
+3. Write the always block triggered on the positive edge of the clock.
+4. Apply reset logic to initialize the counter output to its maximum value.
+5. On every clock pulse, decrement the counter value by one when reset is inactive.
+6. Compile the design and correct any compilation errors.
+7. Simulate the circuit using the Simulation Waveform Editor.
+8. Observe the output counting sequence in the timing diagram.
+9. Verify the results using the truth table to confirm correct down-counting operation.
+
+
+
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. 
+**Developed by**: *Monica R*
 
-Developed by: RegisterNumber:
-*/
+**Register number**: *25010138*
 
-**RTL LOGIC UP COUNTER**
 
-**TIMING DIAGRAM FOR IP COUNTER**
+**UP COUNTER**
+```
+
+module ex11(out,clk,rst);
+input clk,rst;
+output reg [3:0]out;
+always @ (posedge clk)
+begin
+   if(rst)
+     out<=0;
+   else 
+     out <= out+1;
+end
+endmodule
+```
+
+**DOWN COUNTER**
+
+```
+module ex12(out,clk,rst);
+input clk,rst;
+output reg [3:0]out;
+always @ (posedge clk)
+begin
+   if(rst)
+     out<=0;
+   else 
+     out <= out-1;
+end
+endmodule
+```
+
+
+
+**RTL LOGIC COUNTER**
+
+
+**UP COUNTER**
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/c2fcc278-874f-4655-9d5b-f4b0e57cd00a" />
+
+
+
+**DOWN COUNTER**
+<img width="1916" height="1078" alt="image" src="https://github.com/user-attachments/assets/d04c4696-a7f0-47e1-8c98-e0c6e5cd2054" />
+
+
+
+
+**TIMING DIAGRAM FOR COUNTER**
+
+
+**UP COUNTER**
+
+
+<img width="1919" height="1078" alt="image" src="https://github.com/user-attachments/assets/e471e287-e11d-4936-9358-e7308b68f84f" />
+
+
+
+
+**DOWN COUNTER**
+
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/98907a08-712f-4eae-bf22-48d30f5522da" />
+
+
+
 
 **TRUTH TABLE**
 
+
+**UP COUNTER**
+
+
+<img width="880" height="756" alt="image" src="https://github.com/user-attachments/assets/e7be0a3c-4b26-4fd8-871a-db67006b618e" />
+
+
+
+
+
+**DOWN COUNTER**
+
+
+<img width="905" height="477" alt="image" src="https://github.com/user-attachments/assets/8b07ad5b-253c-4aa8-b621-c631c72fcc3f" />
+
+
 **RESULTS**
+
+
+The 4-bit synchronous up counter was successfully implemented and simulated in Quartus Prime. The counter increments its output from 0000 to 1111 on each clock pulse without ripple delay, confirming correct synchronous operation.
